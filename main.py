@@ -19,34 +19,45 @@ shift = int(input("Type the shift number:\n"))
 ##HINT: How do you get the index of an item in a list:
 #https://stackoverflow.com/questions/176918/finding-the-index-of-an-item-in-a-list
 
-
 ##🐛Bug alert: What happens if you try to encode the word 'civilization'?🐛
-def encrypt(plain_text, shift_amount):
-    cipher_text = ""
-    for letter in plain_text:
-        position = alphabet.index(letter)
-        # print(f"Current position {position}")
-        new_position = position + shift_amount
-        # print(f"New position {new_position}")
-        new_letter = alphabet[new_position]
-        # print(new_letter)
-        cipher_text += new_letter
-    print(f"The encoded text is {cipher_text}")
-
+# def encrypt(plain_text, shift_amount):
+#     cipher_text = ""
+#     for letter in plain_text:
+#         position = alphabet.index(letter)
+#         # print(f"Current position {position}")
+#         new_position = position + shift_amount
+#         # print(f"New position {new_position}")
+#         new_letter = alphabet[new_position]
+#         # print(new_letter)
+#         cipher_text += new_letter
+#     print(f"The encoded text is {cipher_text}")
 
 #TODO-3: Call the encrypt function and pass in the user inputs. You should be able to test the code and encrypt a message.
 
+# def decrypt(cipher_text, shift_amount):
+#     plain_text = ""
+#     for letter in cipher_text:
+#         position = alphabet.index(letter)
+#         new_position = position - shift_amount
+#         plain_text += alphabet[new_position]
+#     print(f"The decoded text is {plain_text}")
 
-def decrypt(cipher_text, shift_amount):
-    plain_text = ""
-    for letter in cipher_text:
+# if direction == "encode":
+#     encrypt(text, shift)
+# elif direction == "decode":
+#     decrypt(text, shift)
+
+
+def ceaser(text, shift, direction):
+    result = ""
+    for letter in text:
         position = alphabet.index(letter)
-        new_position = position - shift_amount
-        plain_text += alphabet[new_position]
-    print(f"The decoded text is {plain_text}")
+        if direction == "encode":
+            new_position = position + shift
+        elif direction == "decode":
+            new_position = position - shift
+        result += alphabet[new_position]
+    print(f"The {direction}d text is {result}")
 
 
-if direction == "encode":
-    encrypt(text, shift)
-elif direction == "decode":
-    decrypt(text, shift)
+ceaser(text=text, shift=shift, direction=direction)
